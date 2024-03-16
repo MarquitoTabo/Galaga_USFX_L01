@@ -22,6 +22,7 @@
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 {
 	// set default pawn class to our character class
+	PrimaryActorTick.bCanEverTick = true;
 	DefaultPawnClass = AGalaga_USFX_L01Pawn::StaticClass();
 
 	//NaveEnemiga01 = nullptr;
@@ -31,6 +32,8 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	//set the game satate to playing
+	FVector ubicacionInicioNavesEnemigasCaza = FVector(-500.0f, 500.0f, 200.0f);
+	FVector ubicacionInicioNavesEnemigasTransporte = FVector(500.0f, 500.0f, 200.0f);
 
 	FVector ubicacionNave01 = FVector(0.0f, 1000.0f, 200.0f);
 	FVector ubicacionNave02 = FVector(0.0f, 700.0f, 200.05f);
@@ -52,7 +55,26 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
+
+
 	{
+		//for (int i = 0; i < 5; i++)
+		{
+			//FVector PosicionNaveActual = FVector(ubicacionInicioNavesEnemigasCaza.X, ubicacionInicioNavesEnemigasCaza.Y + i * 300, ubicacionInicioNavesEnemigasCaza.Z);
+			//AMyNaveEnemigaCaza* NaveEnemigaCazaTemporal = World->SpawnActor<AMyNaveEnemigaCaza>(PosicionNaveActual, rotacionNave);
+			//TANavesEnemigas.Push(NaveEnemigaCazaTemporal);
+
+		}
+
+		float nevaaposicionX = ubicacionInicioNavesEnemigasTransporte.X - 300.0f;
+
+		//for (int j = 0; j < 5; j++)
+		{
+			//FVector PosicionNaveActual = FVector(ubicacionInicioNavesEnemigasCaza.X, ubicacionInicioNavesEnemigasCaza.Y + j * 300, ubicacionInicioNavesEnemigasCaza.Z);
+			//AMyNaveEnemigaCaza* NaveEnemigaCazaTemporal = World->SpawnActor<AMyNaveEnemigaCaza>(PosicionNaveActual, rotacionNave);
+
+				//TANavesEnemigasCaza.Push(NaveEnemigaCazaTemporal);
+		}
 		// spawn the projectile
 		NaveEnemigaTransporte01 = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionNave01, rotacionNave); 
 		MyNaveEnemigaCaza01 = World->SpawnActor<AMyNaveEnemigaCaza>(ubicacionNave02, rotacionNave);
@@ -87,4 +109,9 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	NaveEnemigaReabastecimientoG101->SetPosicion(FVector(200.0f, 0.0f, 200.0f));
 	NaveEnemigaReabastecimientoG201->SetPosicion(FVector(600.0f, 250.0f, 200.0f));
 
+}
+
+void AGalaga_USFX_L01GameMode::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
 }

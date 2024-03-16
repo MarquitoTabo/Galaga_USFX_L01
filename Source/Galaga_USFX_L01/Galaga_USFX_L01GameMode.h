@@ -6,7 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
 
-//class ANaveEnemiga;
+class ANaveEnemiga;
 class ANaveEnemigaTransporte;
 class ANaveEnemigaTransporteG1;
 class ANaveEnemigaTransporteG2;
@@ -33,7 +33,7 @@ public:
 
 public:
 
-	//ANaveEnemiga* NaveEnemiga01;
+	ANaveEnemiga* NaveEnemiga01;
 	ANaveEnemigaTransporte* NaveEnemigaTransporte01;
 	AMyNaveEnemigaCaza* MyNaveEnemigaCaza01;
 	AMyNaveEnemigaCazaG1* MyNaveEnemigaCazaG101;
@@ -52,7 +52,14 @@ public:
 protected:
 	//Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+public:
+	TArray<ANaveEnemiga*> TANavesEnemigas;
+	TArray<AMyNaveEnemigaCaza*> TANavesEnemigasCaza;
+	TArray<ANaveEnemigaTransporte*> TANavesEnemigasTransporte;
+private:
+	int TiempoTranscurrido;
 
-
+public:
+	virtual void Tick(float DeltaTime) override;
 
 };

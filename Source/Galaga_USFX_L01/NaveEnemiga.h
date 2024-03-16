@@ -78,7 +78,7 @@ public:
 
 protected:
 	//virtual void mover() = 0;
-	void Mover() PURE_VIRTUAL(ANaveEnemiga::Mover, );
+	void Mover(float DeltaTime) PURE_VIRTUAL(ANaveEnemiga::Mover, );
 	void Disparar() PURE_VIRTUAL(ANaveEnemiga::Disparar, );
 	void Destruirse() PURE_VIRTUAL(ANaveEnemiga::Destruirse, );
 	void Escapar() PURE_VIRTUAL(ANaveEnemiga::Escapar, );
