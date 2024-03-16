@@ -22,9 +22,12 @@ public:
 	FORCEINLINE int GetNivelSpawn() const { return nivelSpawn; }
 	FORCEINLINE void SetNivelSpawn(int _nivelSpawn) { nivelSpawn = _nivelSpawn; }
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime);
 	virtual void Disparar();
 	virtual void Destruirse();
 	virtual void Escapar();
 	
+public:
+
+	virtual void Tick(float DeltaTime) override;
 };

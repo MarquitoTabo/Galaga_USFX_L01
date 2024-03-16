@@ -34,6 +34,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	//set the game satate to playing
 	FVector ubicacionInicioNavesEnemigasCaza = FVector(-500.0f, 500.0f, 200.0f);
 	FVector ubicacionInicioNavesEnemigasTransporte = FVector(500.0f, 500.0f, 200.0f);
+	FVector ubicacionInicioNAvesEnemigasReabastecimiento = FVector(1000.0f, 500.0f, 200.0f);
 
 	FVector ubicacionNave01 = FVector(0.0f, 1000.0f, 200.0f);
 	FVector ubicacionNave02 = FVector(0.0f, 700.0f, 200.05f);

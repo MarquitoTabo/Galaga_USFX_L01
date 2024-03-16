@@ -22,8 +22,11 @@ public:
 	FORCEINLINE int GetRecargaResistencia() const { return recargaResistencia; }
 	FORCEINLINE void SetRecargaResistencia(int _recargaResistencia) { recargaResistencia = _recargaResistencia; }
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime);
 	virtual void Disparar();
 	virtual void Destruirse();
 	virtual void Escapar();
+public:
+
+	virtual void Tick(float DeltaTime) override;
 };
