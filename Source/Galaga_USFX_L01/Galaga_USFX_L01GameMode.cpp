@@ -142,6 +142,7 @@ void AGalaga_USFX_L01GameMode::Tick(float DeltaTime)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("PowerUp: %s"), *PowerUp));
 		}
+
 	}
 	
 }
