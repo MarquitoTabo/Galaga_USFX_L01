@@ -75,10 +75,12 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01Pawn() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGalaga_USFX_L01Pawn_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+		{ "Comment", "//#include \"Galaga_USFX_L01GameMode.h\"\n" },
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "Galaga_USFX_L01Pawn.h" },
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Galaga_USFX_L01Pawn.h" },
+		{ "ToolTip", "#include \"Galaga_USFX_L01GameMode.h\"" },
 	};
 #endif
 #if WITH_METADATA
@@ -186,7 +188,7 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01Pawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGalaga_USFX_L01Pawn, 785512924);
+	IMPLEMENT_CLASS(AGalaga_USFX_L01Pawn, 883591086);
 	template<> GALAGA_USFX_L01_API UClass* StaticClass<AGalaga_USFX_L01Pawn>()
 	{
 		return AGalaga_USFX_L01Pawn::StaticClass();

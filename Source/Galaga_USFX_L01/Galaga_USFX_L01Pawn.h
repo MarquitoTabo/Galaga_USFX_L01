@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Galaga_USFX_L01Pawn.generated.h"
-#include "Galaga_USFX_L01GameMode.h"
+//#include "Galaga_USFX_L01GameMode.h"
 
 UCLASS(Blueprintable)
 class AGalaga_USFX_L01Pawn : public APawn
@@ -77,5 +77,5 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 public:
-	void scoreGameMode(int nuevoScore) { score = nuevoScore; }
+	//void scoreGameMode(int nuevoScore) { score = nuevoScore; }
 };

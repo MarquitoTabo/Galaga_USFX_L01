@@ -120,14 +120,14 @@ void AGalaga_USFX_L01Pawn::FireShot(FVector FireDirection)
 				World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation, FireRotation);
 				//World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
 			}
-			if (score >= 500)
-			{
-				if (World != nullptr)
-				{
-					World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
-				}
+			//if (score >= 500)
+			//{
+				//if (World != nullptr)
+				//{
+				////	World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
+				//}
 				
-			}
+			//}
 
 			bCanFire = false;
 			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AGalaga_USFX_L01Pawn::ShotTimerExpired, FireRate);
