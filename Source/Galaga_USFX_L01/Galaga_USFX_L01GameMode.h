@@ -59,7 +59,16 @@ public:
 private:
 	int TiempoTranscurrido;
 
+private:
+	int score;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 
+public:
+	FString powerUp;
+	TMap<int, FString>TMapPowerUp;
+public:
+	FORCEINLINE int GetScore() const { return score; }
+	FORCEINLINE void SetScore(int _score) { score = _score; }
 };

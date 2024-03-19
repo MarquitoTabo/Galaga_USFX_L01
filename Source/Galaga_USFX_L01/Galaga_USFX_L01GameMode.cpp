@@ -110,9 +110,38 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	NaveEnemigaReabastecimientoG101->SetPosicion(FVector(200.0f, 0.0f, 200.0f));
 	NaveEnemigaReabastecimientoG201->SetPosicion(FVector(600.0f, 250.0f, 200.0f));
 
+	TMapPowerUp.Add(100, "escudo");
+	TMapPowerUp.Add(500, "doble tiro");
+	TMapPowerUp.Add(1000, "vida extra");
+	TMapPowerUp.Add(1500, "invulnerable");
+	TMapPowerUp.Add(50, "velocidad");
+	score = 0;
 }
+
 
 void AGalaga_USFX_L01GameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	TiempoTranscurrido++;
+	if (TiempoTranscurrido >= 100)
+	{
+		int numeroEnemigo = FMath::RandRange(0, 9);
+		if (GEngine)
+		{
+
+		}
+		score = score + 50;
+		TiempoTranscurrido = 0;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("score: %d"), score));
+	}
+	for (const auto& par : TMapPowerUp)
+	{
+		int scoreMap = par.Key;
+		FString PowerUp = par.Value;
+		if (scoreMap == score)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("PowerUp: %s"), *PowerUp));
+		}
+	}
+	
 }

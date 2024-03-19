@@ -12,6 +12,7 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "Galaga_USFX_L01GameMode.h"
 
 const FName AGalaga_USFX_L01Pawn::MoveForwardBinding("MoveForward");
 const FName AGalaga_USFX_L01Pawn::MoveRightBinding("MoveRight");
@@ -48,6 +49,7 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 	MoveSpeed = 1000.0f;
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
+	//GunOffset2 = FVector(90.f, 90.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
 }
@@ -110,12 +112,21 @@ void AGalaga_USFX_L01Pawn::FireShot(FVector FireDirection)
 			const FRotator FireRotation = FireDirection.Rotation();
 			// Spawn projectile at an offset from this pawn
 			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
-
+			const FVector SpawnLocation2 = GetActorLocation() + FireRotation.RotateVector(GunOffset2);
 			UWorld* const World = GetWorld();
 			if (World != nullptr)
 			{
 				// spawn the projectile
 				World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation, FireRotation);
+				//World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
+			}
+			if (score >= 500)
+			{
+				if (World != nullptr)
+				{
+					World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
+				}
+				
 			}
 
 			bCanFire = false;
