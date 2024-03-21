@@ -15,15 +15,21 @@ AMyNaveEnemigaCaza::AMyNaveEnemigaCaza()
 
 void AMyNaveEnemigaCaza::Mover(float DeltaTime)
 {
-	FVector PosicionActual = GetActorLocation();
+	static FVector PosicionActual = GetActorLocation();
 
-	float NuevaX = FMath::RandRange(-1000.0f, 1000.0f) * DeltaTime;
-	float NuevaY = FMath::RandRange(-1000.0f, 1000.0f) * DeltaTime;
+	static float TopeAbajo = PosicionActual.X - 1300.0f;
+	static float Reaparicion = PosicionActual.X + 200.0f;
+	static float MovimientoY = 0.0f;
 
 
-	FVector NuevaPosicion = FVector(PosicionActual.X + NuevaX, PosicionActual.Y + NuevaY, PosicionActual.Z);
+	FVector Desplazamiento = FVector(-50.0f * DeltaTime, MovimientoY * DeltaTime, FMath::RandRange(-500.0f, 500.0f) * DeltaTime);
 
-	SetActorLocation(NuevaPosicion);
+	FVector ReaparicionPocision = GetActorLocation() + Desplazamiento;
+	if (ReaparicionPocision.X < TopeAbajo)
+	{
+		ReaparicionPocision.X = Reaparicion;
+	}
+	SetActorLocation(ReaparicionPocision);
 
 }
 

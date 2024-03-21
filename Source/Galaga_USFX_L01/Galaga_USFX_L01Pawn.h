@@ -78,4 +78,5 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 public:
 	//void scoreGameMode(int nuevoScore) { score = nuevoScore; }
+	int Score;
 };

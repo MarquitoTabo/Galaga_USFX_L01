@@ -12,7 +12,7 @@ ANaveEnemigaReabastecimiento::ANaveEnemigaReabastecimiento()
 
 void ANaveEnemigaReabastecimiento::Mover(float DeltaTime)
 {
-	FVector PosicionActual = GetActorLocation();
+	/*FVector PosicionActual = GetActorLocation();
 
 
 	float NuevaX = FMath::RandRange(-1000.0f, 1000.0f) * (DeltaTime / 1000.0f);
@@ -21,7 +21,22 @@ void ANaveEnemigaReabastecimiento::Mover(float DeltaTime)
 
 	FVector NuevaPosicion = FVector(PosicionActual.X + NuevaX, PosicionActual.Y + NuevaY, PosicionActual.Z + NuevaZ);
 
-	SetActorLocation(NuevaPosicion);
+	SetActorLocation(NuevaPosicion);*/
+	static FVector PosicionActual = GetActorLocation();
+
+	static float TopeAbajo = PosicionActual.X - 1300.0f;
+	static float Reaparicion = PosicionActual.X + 200.0f;
+	static float MovimientoY = 0.0f;
+
+
+	FVector Desplazamiento = FVector(-125.0f * DeltaTime, MovimientoY * DeltaTime, FMath::RandRange(-500.0f, 500.0f) * DeltaTime);
+
+	FVector ReaparicionPocision = GetActorLocation() + Desplazamiento;
+	if (ReaparicionPocision.X < TopeAbajo)
+	{
+		ReaparicionPocision.X = Reaparicion;
+	}
+	SetActorLocation(ReaparicionPocision);
 }
 
 void ANaveEnemigaReabastecimiento::Disparar()

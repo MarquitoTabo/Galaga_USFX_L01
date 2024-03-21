@@ -49,9 +49,10 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 	MoveSpeed = 1000.0f;
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
-	//GunOffset2 = FVector(90.f, 90.f, 0.f);
+	GunOffset2 = FVector(90.f, 90.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+	Score = 0;
 }
 
 void AGalaga_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -76,6 +77,21 @@ void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 
 	// Calculate  movement
 	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
+
+	bool masVelocidad = false;
+
+	{
+		AGalaga_USFX_L01GameMode* GameMode = Cast<AGalaga_USFX_L01GameMode>(GetWorld()->GetAuthGameMode());
+		if (GameMode != nullptr)
+		{
+			masVelocidad = GameMode->GetPowerUpStatus(500);
+		}
+	}
+
+	if (masVelocidad)
+	{
+		MoveSpeed = 2000.0f;
+	}
 
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
@@ -118,16 +134,25 @@ void AGalaga_USFX_L01Pawn::FireShot(FVector FireDirection)
 			{
 				// spawn the projectile
 				World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation, FireRotation);
-				//World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
+			
 			}
-			//if (score >= 500)
-			//{
-				//if (World != nullptr)
-				//{
-				////	World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
-				//}
-				
-			//}
+			bool disparodoble = false;
+			{
+				AGalaga_USFX_L01GameMode* GameMode = Cast<AGalaga_USFX_L01GameMode>(GetWorld()->GetAuthGameMode());
+				if (GameMode != nullptr)
+				{
+					disparodoble = GameMode->GetPowerUpStatus(200);
+				}
+			}
+
+			if (disparodoble)
+			{
+
+				if (World != nullptr)
+				{
+					World->SpawnActor<AGalaga_USFX_L01Projectile>(SpawnLocation2, FireRotation);
+				}
+			}
 
 			bCanFire = false;
 			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AGalaga_USFX_L01Pawn::ShotTimerExpired, FireRate);

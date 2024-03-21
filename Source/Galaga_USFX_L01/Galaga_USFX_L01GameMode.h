@@ -59,8 +59,10 @@ public:
 private:
 	int TiempoTranscurrido;
 
-private:
+public:
 	int score;
+	int POWER_UP_DOUBLE_SHOT_ID;
+
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -68,7 +70,13 @@ public:
 public:
 	FString powerUp;
 	TMap<int, FString>TMapPowerUp;
-public:
-	FORCEINLINE int GetScore() const { return score; }
-	FORCEINLINE void SetScore(int _score) { score = _score; }
+
+	FORCEINLINE bool GetPowerUpStatus(int PowerUpID) const
+	{
+		const bool* Status = PowerUpStatusMap.Find(PowerUpID);
+		return (Status != nullptr) ? *Status : false;
+	}
+
+private:
+	TMap<int, bool> PowerUpStatusMap;
 };
