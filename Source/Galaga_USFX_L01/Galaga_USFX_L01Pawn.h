@@ -24,6 +24,8 @@ class AGalaga_USFX_L01Pawn : public APawn
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
+	
+
 public:
 	AGalaga_USFX_L01Pawn();
 
@@ -43,6 +45,17 @@ public:
 	/** Sound to play each time we fire */
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
+
+	void CrearBarrera();
+	void SpawnBarrera();
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* SceneComponentBarrera;
+
+protected:
+
+	FTimerHandle TimerHandle_CrearBarreraProt;
+	FTimerHandle BarreraTimerHandle;
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
@@ -79,4 +92,9 @@ public:
 public:
 	//void scoreGameMode(int nuevoScore) { score = nuevoScore; }
 	int Score;
-};
+
+public:
+		virtual void BeginPlay() override;
+
+		// ... más código ...
+	};

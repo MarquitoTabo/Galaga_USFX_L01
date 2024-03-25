@@ -18,6 +18,8 @@
 #include "NaveEnemigaNodrizaG2.h"
 #include "NaveEnemigaReabastecimientoG1.h"
 #include "NaveEnemigaReabastecimientoG2.h"
+#include "Components/SceneComponent.h"
+#include "SceneComponentBarrera.h"
 
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 {
@@ -55,6 +57,8 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
 
 	UWorld* const World = GetWorld();
+
+
 	if (World != nullptr)
 	{
 	TArray<TSubclassOf<ANaveEnemiga>> claseNave = { AMyNaveEnemigaCazaG1::StaticClass(), AMyNaveEnemigaCazaG2::StaticClass(),ANaveEnemigaEspiaG1::StaticClass(),ANaveEnemigaEspiaG2::StaticClass(),

@@ -13,6 +13,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "Galaga_USFX_L01GameMode.h"
+#include "SceneComponentBarrera.h"
+#include "Components/SceneComponent.h"
+#include "Barrera.h"
 
 const FName AGalaga_USFX_L01Pawn::MoveForwardBinding("MoveForward");
 const FName AGalaga_USFX_L01Pawn::MoveRightBinding("MoveRight");
@@ -20,14 +23,14 @@ const FName AGalaga_USFX_L01Pawn::FireForwardBinding("FireForward");
 const FName AGalaga_USFX_L01Pawn::FireRightBinding("FireRight");
 
 AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
-{	
+{
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
 	RootComponent = ShipMeshComponent;
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
-	
+
 	// Cache our sound effect
 	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
 	FireSound = FireAudio.Object;
@@ -53,6 +56,73 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 	FireRate = 0.1f;
 	bCanFire = true;
 	Score = 0;
+
+	PrimaryActorTick.bCanEverTick = true;
+
+	// Crear el componente de malla estática
+	//SceneComponentBarrera = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SceneComponentBarrera"));
+
+	////Cargar la malla desde un archivo
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> BarreraMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Pipe_180.Shape_Pipe_180'"));
+
+
+
+	//	SceneComponentBarrera->SetStaticMesh(BarreraMesh.Object);
+}
+//void AGalaga_USFX_L01Pawn::BeginPlay()
+//{
+//	Super::BeginPlay();
+//	GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 15.0f, true);
+//	
+//	GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, this, &AGalaga_USFX_L01Pawn::SpawnBarrera, 15.0f, true);
+//}
+void AGalaga_USFX_L01Pawn::CrearBarrera()
+{
+	FVector Location = GetActorLocation() + FVector(100.0f, 0.0f, 0.0f);
+	FRotator Rotation = GetActorRotation();
+
+	USceneComponentBarrera* CrearBarrera = GetWorld()->SpawnActor<USceneComponentBarrera>(USceneComponentBarrera::StaticClass(), Location, Rotation);
+	if (CrearBarrera != nullptr)
+	{
+		CrearBarrera->SetWorldLocation(Location);
+		CrearBarrera->SetWorldRotation(Rotation);
+	}
+
+}
+
+
+void AGalaga_USFX_L01Pawn::SpawnBarrera()
+{
+	FVector SpawnLocation = GetActorLocation() + FVector(100.0f, 0.0f, 0.0f);
+	FRotator SpawnRotation = GetActorRotation();
+
+	ABarrera* Barrera = GetWorld()->SpawnActor<ABarrera>(ABarrera::StaticClass(), SpawnLocation, SpawnRotation);
+
+	FTimerDelegate TimerDel;
+
+	/*GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, Barrera);
+		{
+			if (Barrera)
+			{
+				Barrera->Destroy();
+			}
+		 5.0f, false;
+		}*/
+	TimerDel.BindLambda([Barrera]()
+		{
+			if (Barrera)
+			{
+				Barrera->Destroy();
+			}
+		});
+	//GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, TimerDel, 5.0f, false);
+}
+void AGalaga_USFX_L01Pawn::BeginPlay()
+{
+	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 15.0f, true);
+
+	GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, this, &AGalaga_USFX_L01Pawn::SpawnBarrera, 10.0f, true);
 }
 
 void AGalaga_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
