@@ -23,7 +23,7 @@ public:
 		UPROPERTY(EditAnywhere)
 		TSubclassOf<AActor> BarreraToSpawn;
 
-		UStaticMeshComponent* SceneComponentBarrera;
+		//UStaticMeshComponent* SceneComponentBarrera;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

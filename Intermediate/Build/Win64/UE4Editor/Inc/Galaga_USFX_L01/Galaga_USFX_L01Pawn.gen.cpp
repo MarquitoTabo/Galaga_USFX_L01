@@ -159,8 +159,10 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01Pawn() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGalaga_USFX_L01Pawn_Statics::NewProp_SceneComponentBarrera_MetaData[] = {
 		{ "Category", "Galaga_USFX_L01Pawn" },
+		{ "Comment", "//void SpawnBarrera();\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Galaga_USFX_L01Pawn.h" },
+		{ "ToolTip", "void SpawnBarrera();" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGalaga_USFX_L01Pawn_Statics::NewProp_SceneComponentBarrera = { "SceneComponentBarrera", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGalaga_USFX_L01Pawn, SceneComponentBarrera), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGalaga_USFX_L01Pawn_Statics::NewProp_SceneComponentBarrera_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGalaga_USFX_L01Pawn_Statics::NewProp_SceneComponentBarrera_MetaData)) };
@@ -201,7 +203,7 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01Pawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGalaga_USFX_L01Pawn, 3598391413);
+	IMPLEMENT_CLASS(AGalaga_USFX_L01Pawn, 1552586832);
 	template<> GALAGA_USFX_L01_API UClass* StaticClass<AGalaga_USFX_L01Pawn>()
 	{
 		return AGalaga_USFX_L01Pawn::StaticClass();

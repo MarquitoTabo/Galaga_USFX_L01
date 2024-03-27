@@ -69,61 +69,79 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 
 	//	SceneComponentBarrera->SetStaticMesh(BarreraMesh.Object);
 }
-//void AGalaga_USFX_L01Pawn::BeginPlay()
-//{
-//	Super::BeginPlay();
-//	GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 15.0f, true);
+void AGalaga_USFX_L01Pawn::BeginPlay()
+{
+	Super::BeginPlay();
+GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 15.0f, true);
 //	
 //	GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, this, &AGalaga_USFX_L01Pawn::SpawnBarrera, 15.0f, true);
-//}
+}
 void AGalaga_USFX_L01Pawn::CrearBarrera()
 {
 	FVector Location = GetActorLocation() + FVector(100.0f, 0.0f, 0.0f);
 	FRotator Rotation = GetActorRotation();
 
-	USceneComponentBarrera* CrearBarrera = GetWorld()->SpawnActor<USceneComponentBarrera>(USceneComponentBarrera::StaticClass(), Location, Rotation);
-	if (CrearBarrera != nullptr)
+	USceneComponentBarrera* CrearBarreraComponent = GetWorld()->SpawnActor<USceneComponentBarrera>(USceneComponentBarrera::StaticClass(), Location, Rotation);
+	if (CrearBarreraComponent != nullptr)
 	{
-		CrearBarrera->SetWorldLocation(Location);
-		CrearBarrera->SetWorldRotation(Rotation);
+		CrearBarreraComponent->SetWorldLocation(Location);
+		CrearBarreraComponent->SetWorldRotation(Rotation);
 	}
+	ABarrera* CrearBarreraActor = GetWorld()->SpawnActor<ABarrera>(ABarrera::StaticClass(), Location, Rotation);
+	if (CrearBarreraActor != nullptr)
+	{
+		CrearBarreraActor->SetActorLocation(Location);
+		CrearBarreraActor->SetActorRotation(Rotation);
 
-}
-
-
-void AGalaga_USFX_L01Pawn::SpawnBarrera()
-{
-	FVector SpawnLocation = GetActorLocation() + FVector(100.0f, 0.0f, 0.0f);
-	FRotator SpawnRotation = GetActorRotation();
-
-	ABarrera* Barrera = GetWorld()->SpawnActor<ABarrera>(ABarrera::StaticClass(), SpawnLocation, SpawnRotation);
-
-	FTimerDelegate TimerDel;
-
-	/*GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, Barrera);
-		{
-			if (Barrera)
+		// Crear un delegado de temporizador
+		FTimerDelegate TimerDel;
+		TimerDel.BindLambda([CrearBarreraActor]()
 			{
-				Barrera->Destroy();
-			}
-		 5.0f, false;
-		}*/
-	TimerDel.BindLambda([Barrera]()
-		{
-			if (Barrera)
-			{
-				Barrera->Destroy();
-			}
-		});
-	//GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, TimerDel, 5.0f, false);
-}
-void AGalaga_USFX_L01Pawn::BeginPlay()
-{
-	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 15.0f, true);
+				if (CrearBarreraActor && CrearBarreraActor->IsValidLowLevel())
+				{
+					CrearBarreraActor->Destroy();
+				}
+			});
 
-	GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, this, &AGalaga_USFX_L01Pawn::SpawnBarrera, 10.0f, true);
+		// Destruccion del actor despues de 5 segundos de aparecer
+		GetWorld()->GetTimerManager().SetTimer(DestruirBarrera, TimerDel, 5.0f, false);
+	}
 }
+
+
+//void AGalaga_USFX_L01Pawn::SpawnBarrera()
+//{
+//	FVector SpawnLocation = GetActorLocation() + FVector(100.0f, 0.0f, 0.0f);
+//	FRotator SpawnRotation = GetActorRotation();
+//
+//	ABarrera* Barrera = GetWorld()->SpawnActor<ABarrera>(ABarrera::StaticClass(), SpawnLocation, SpawnRotation);
+//
+//	FTimerDelegate TimerDel;
+//
+//	/*GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, Barrera);
+//		{
+//			if (Barrera)
+//			{
+//				Barrera->Destroy();
+//			}
+//		 5.0f, false;
+//		}*/
+//	TimerDel.BindLambda([Barrera]()
+//		{
+//			if (Barrera)
+//			{
+//				Barrera->Destroy();
+//			}
+//		});
+//	//GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, TimerDel, 5.0f, false);
+//}
+//void AGalaga_USFX_L01Pawn::BeginPlay()
+//{
+//	Super::BeginPlay();
+//	GetWorld()->GetTimerManager().SetTimer(TimerHandle_CrearBarreraProt, this, &AGalaga_USFX_L01Pawn::CrearBarrera, 10.0f, true);
+//
+//	//GetWorld()->GetTimerManager().SetTimer(BarreraTimerHandle, this, &AGalaga_USFX_L01Pawn::SpawnBarrera, 10.0f, true);
+//}
 
 void AGalaga_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {

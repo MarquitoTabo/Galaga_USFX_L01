@@ -14,13 +14,13 @@ USceneComponentBarrera::USceneComponentBarrera()
 
 	// ...
 	// Crear el componente de malla estática
-	SceneComponentBarrera = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SceneComponentBarrera"));
+	//SceneComponentBarrera = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SceneComponentBarrera"));
 
 	//// Cargar la malla desde un archivo
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> BarreraMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Trim.Shape_Trim'"));
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> BarreraMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Trim.Shape_Trim'"));
 	
 
-	SceneComponentBarrera->SetStaticMesh(BarreraMesh.Object);
+	//SceneComponentBarrera->SetStaticMesh(BarreraMesh.Object);
 	
 
 

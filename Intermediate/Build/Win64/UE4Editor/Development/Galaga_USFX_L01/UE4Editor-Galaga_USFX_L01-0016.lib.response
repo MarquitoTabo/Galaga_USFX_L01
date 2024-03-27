@@ -7,6 +7,7 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\Galaga_USFX_L01Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Barrera.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Escenario.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Galaga_USFX_L01.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Galaga_USFX_L01GameMode.cpp.obj"
@@ -30,6 +31,8 @@
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\NaveEnemigaTransporteG2.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\PowerBonus.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\ProyectilEnemigo.cpp.obj"
+"C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\SceneComponentBarrera.cpp.obj"
+"C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Barrera.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Escenario.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Galaga_USFX_L01.init.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Galaga_USFX_L01GameMode.gen.cpp.obj"
@@ -53,5 +56,6 @@
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\NaveEnemigaTransporteG2.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\PowerBonus.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\ProyectilEnemigo.gen.cpp.obj"
+"C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\SceneComponentBarrera.gen.cpp.obj"
 "C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Default.rc2.res"
 /OUT:"C:\Users\Usuario\Documents\Unreal Projects\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\UE4Editor-Galaga_USFX_L01-0016.lib"

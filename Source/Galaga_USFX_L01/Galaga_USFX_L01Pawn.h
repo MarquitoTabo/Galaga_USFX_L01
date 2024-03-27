@@ -47,7 +47,7 @@ public:
 	class USoundBase* FireSound;
 
 	void CrearBarrera();
-	void SpawnBarrera();
+	//void SpawnBarrera();
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* SceneComponentBarrera;
@@ -56,7 +56,7 @@ protected:
 
 	FTimerHandle TimerHandle_CrearBarreraProt;
 	FTimerHandle BarreraTimerHandle;
-
+	FTimerHandle DestruirBarrera;
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
